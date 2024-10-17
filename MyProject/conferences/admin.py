@@ -8,6 +8,8 @@ class ReservationInline(admin.StackedInline):
     extra=1
     readonly_fields=('reservation_date',)
     can_delete=True
+
+    
 class ParticipantFilter(admin.SimpleListFilter):
     title = "Participant filter"
     parameter_name = "participants"
@@ -49,7 +51,7 @@ class DateFilter(admin.SimpleListFilter):
         return queryset
 
 class ConfAdmin(admin.ModelAdmin):
-    list_display = ('titre', 'location', 'start_date', 'end_date', 'price') 
+    list_display = ('titre', 'location', 'start_date', 'end_date', 'price', 'category') 
     search_fields = ('titre',)
     list_per_page=2
     ordering=('start_date','titre')
@@ -68,4 +70,5 @@ class ConfAdmin(admin.ModelAdmin):
     inlines=[ReservationInline]
     autocomplete_fields=('category',)
     list_filter=('titre',ParticipantFilter,DateFilter)
+    list_display_links = ('titre', 'category',)
 admin.site.register(conferences, ConfAdmin)
