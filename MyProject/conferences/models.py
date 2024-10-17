@@ -13,7 +13,10 @@ class conferences(models.Model):
     
     titre=models.CharField(max_length=255)
     description=models.TextField()
+    #start_date=models.DateField(default=timezone.now().date())
     start_date=models.DateField(default=timezone.now().date())
+    #start_date = models.DateField(default=timezone.now)  # Use timezone.now directly
+
     end_date=models.DateField()
     location=models.CharField(max_length=255)
     price=models.FloatField()
@@ -36,4 +39,6 @@ class conferences(models.Model):
                 ,name='the date must be greater or equal to today'
             )
         ]
+    def __str__(self):
+        return f"title conference = {self.titre}"
 

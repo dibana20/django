@@ -21,4 +21,6 @@ class Category(models.Model):
     #auto now il va prendre date system automatiquement
     class Meta:
         verbose_name_plural="categories"
+    def __str__(self):
+            return f"categorie = {self.title}"
 

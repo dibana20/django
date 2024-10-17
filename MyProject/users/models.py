@@ -42,6 +42,9 @@ class participant(AbstractUser):
     created_at=models.DateTimeField(auto_now_add=True)
     class Meta:
         verbose_name_plural="participants"
+    def __str__(self):
+        return f"User name = {self.username}"
+
 
 
 class reservation(models.Model):
