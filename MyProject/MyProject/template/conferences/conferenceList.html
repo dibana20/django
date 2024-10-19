@@ -1,0 +1,8 @@
+<h1>Liste des conférences</h1>
+{% for c in conferenceList %}
+<fieldset>
+    <legend>{{ c.titre }}</legend>
+    <p>Description: {{c.description}}</p>
+    <p>Description: {{c.start_date}}</p>
+</fieldset>
+{% endfor %}

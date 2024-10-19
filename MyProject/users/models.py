@@ -58,7 +58,7 @@ class reservation(models.Model):
         reservation_count=reservation.objects.filter(
             participant=self.participant,
             reservation_date=self.reservation_date
-        )
+        ).count()
         if reservation_count>=3:
             raise ValidationError('reservation_count >=3')
     class Meta :

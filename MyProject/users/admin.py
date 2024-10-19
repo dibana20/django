@@ -33,8 +33,20 @@ class ConfUser(admin.ModelAdmin):
 
 
 
+class confReservation(admin.ModelAdmin):
+    list_display=('conferences','participant','confirmed','reservation_date')
+    actions=['is_confirmed','unconfirmed']
+    def is_confirmed(self,request,queryset):
+        queryset.update(confirmed=True)
+        self.message_user(request,"la reservations est confirmée")
+    is_confirmed.short_description="Reservation à confirmer"
+
+    def unconfirmed(self,request,queryset):
+        queryset.update(confirmed=False)
+        self.message_user(request,"la reservations n'est pas confirmée")
+    unconfirmed.short_description="Reservation à non confirmer"
 
 admin.site.register(participant,ConfUser)
-admin.site.register(reservation)
+admin.site.register(reservation,confReservation)
 
 
